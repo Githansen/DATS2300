@@ -25,9 +25,10 @@ public class Main {
         for(double i = 2; i <= 5; i++){
             sum += 1/i;
         }
-        System.out.println(Math.log(10000000));
-            System.out.println(Uke1sortering.harmonisk(100000000));
-            System.out.println(Math.log(100000000) +0.577);
+        System.out.println(Math.log(100000000)-0.423);
+        //gjennomsnittlig antall tall som er større enn alle foran er det harmoniske tallet -1
+            System.out.println(Uke1sortering.harmonisk(100000000)-1);
+            System.out.println(Math.log(100000000) -0.423);
             System.out.println(Uke1sortering.eulers(100000000));
 
         int n = 1000000;
