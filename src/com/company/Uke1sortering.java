@@ -3,7 +3,7 @@ package com.company;
 import java.text.DecimalFormat;
 import java.util.Arrays;
 import java.util.Random;
-
+//div algoritmer for testing
 public class Uke1sortering {
     //returnerer indeks til største tall
     public static int maks(int[] a)  // a er en heltallstabell
