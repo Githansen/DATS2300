@@ -1,16 +1,47 @@
 package com.company;
 
+import java.text.DecimalFormat;
 import java.util.Arrays;
+import java.util.Random;
+
+
+import static com.company.Uke1sortering.maks;
+import static com.company.Uke1sortering.randPermB;
+
 
 public class Main {
 
     public static void main(String[] args) {
         int[] stigende = {2,3,4,5,6,7,8,9,10,11};
         int[] synkende = {11,10,9,8,7,6,5,4,3,2,1};
-        int[] tilfeldig ={2,5,3,67,11,4,9,6,7,32};
-        System.out.println(Arrays.toString(stigende));
-        System.out.println(Uke1sortering.maks(tilfeldig));
+        int[] tilfeldig ={5,3,7,4,3,5,7,8,6,7};
+
+        System.out.println(maks(tilfeldig));
         System.out.println(Uke1sortering.min(tilfeldig));
+        System.out.println(Arrays.toString(Uke1sortering.delsortering(synkende)));
+        System.out.println(Uke1sortering.antallulike(tilfeldig));
+        System.out.println(Arrays.toString(Uke1sortering.roterx(stigende,-3)));
+        double sum = 0;
+        for(double i = 2; i <= 5; i++){
+            sum += 1/i;
+        }
+
+        System.out.println(sum);
+            System.out.println(Uke1sortering.harmonisk(100));
+            System.out.println(Uke1sortering.eulers(100));
+
+        int n = 1000000;
+        long tid = System.currentTimeMillis();
+         randPermB(n);
+        tid = System.currentTimeMillis() - tid;
+        System.out.println(tid + " ne");
+
+        n = 1000000;
+        tid = System.currentTimeMillis();
+        Uke1sortering.randomarray(n);
+        tid = System.currentTimeMillis() - tid;
+        System.out.println(tid + " ne");
 
     }
+
 }
