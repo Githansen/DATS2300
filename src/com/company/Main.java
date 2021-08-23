@@ -25,22 +25,23 @@ public class Main {
         for(double i = 2; i <= 5; i++){
             sum += 1/i;
         }
-
-        System.out.println(sum);
-            System.out.println(Uke1sortering.harmonisk(100));
-            System.out.println(Uke1sortering.eulers(100));
+        System.out.println(Math.log(10000000));
+            System.out.println(Uke1sortering.harmonisk(100000000));
+            System.out.println(Math.log(100000000) +0.577);
+            System.out.println(Uke1sortering.eulers(100000000));
 
         int n = 1000000;
         long tid = System.currentTimeMillis();
          randPermB(n);
         tid = System.currentTimeMillis() - tid;
-        System.out.println(tid + " ne");
+        System.out.println(tid + " ms");
 
-        n = 1000000;
+
         tid = System.currentTimeMillis();
         Uke1sortering.randomarray(n);
         tid = System.currentTimeMillis() - tid;
-        System.out.println(tid + " ne");
+        System.out.println(tid + " ms");
+
 
     }
 

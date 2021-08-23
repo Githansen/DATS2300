@@ -105,14 +105,12 @@ public class Uke1sortering {
             }
             return numbers;
       }
-        public static double harmonisk(int n){
-            double sum = 0;
-            for(double i = 1; i <= n; i++){
-                sum += 1/i;
-            }
-
-            return sum;
-        }
+    public static double harmonisk(int n)
+    {
+        double sum = 0.0;
+        for (int i = 1; i <= n; i++) sum += 1.0/i;
+        return sum;
+    }
         public static String eulers(double n){
             double sum = Math.log(n) - 0.423;
 
@@ -120,7 +118,7 @@ public class Uke1sortering {
             return df.format(sum);
         }
         public static double eulersdiff(int n){
-            double sum = harmonisk(n) - Math.log(n);
+            double sum = harmonisk(n) - Math.log10(n);
             return sum;
         }
     public static int[] randomarray(int n)  // en effektiv versjon
@@ -139,6 +137,23 @@ public class Uke1sortering {
         return a;                        // permutasjonen returneres
     }
     public static int[] randPermB(int n)  // virker, men er ineffektiv
+    {
+        Random r = new Random();         // en randomgenerator
+        int[] a = new int[n];            // en tabell med plass til n tall
+        boolean[] har = new boolean[n];  // en boolsk tabell
+
+        for (int i = 0; i < n; )         // vi skal legge inn n tall
+        {
+            int k = r.nextInt(n);          // trekker en indeks k
+            if (har[k] == false)           // sjekker
+            {
+                har[k] = true;               // oppdaterer den boolske tabellen
+                a[i++] = k + 1;              // legger inn k + 1 i a
+            }
+        }
+        return a;                        // tabellen returneres
+    }
+    public static int[] randPermC(int n)  // virker, men er ineffektiv
     {
         Random r = new Random();         // en randomgenerator
         int[] a = new int[n];            // en tabell med plass til n tall
