@@ -3,13 +3,17 @@ package com.company;
 import java.text.DecimalFormat;
 import java.util.Arrays;
 import java.util.Random;
+
+import static com.company.Program.maks1;
+import static com.company.Program.maks2;
+
 //div algoritmer for testing
 public class Uke1sortering {
     //returnerer indeks til største tall
     public static int maks(int[] a)  // a er en heltallstabell
     {
         if (a.length < 1) throw new IllegalArgumentException("a er tom");
-
+        int antall = 0;
         int m = 0;  // indeks til største verdi
 
         for (int i = 1; i < a.length; i++) // obs: starter med i = 1
@@ -121,53 +125,69 @@ public class Uke1sortering {
             double sum = harmonisk(n) - Math.log10(n);
             return sum;
         }
-    public static int[] randomarray(int n)  // en effektiv versjon
+
+    public static int makstest()
     {
-        Random r = new Random();         // en randomgenerator
-        int[] a = new int[n];            // en tabell med plass til n tall
-
-        Arrays.setAll(a, i -> i + 1);    // legger inn tallene 1, 2, . , n
-
-        for (int k = n - 1; k > 0; k--)  // løkke som går n - 1 ganger
-        {
-            int i = r.nextInt(k+1);        // en tilfeldig tall fra 0 til k
-            bytt(a,k,i);                   // bytter om
+        int antallfeil = 0;
+        int[] a = {8,3,5,7,9,6,10,2,1,4,5};  // maksverdien 10 er i posisjon 6
+        if (maks2(a) != 6) { // kaller maks-metoden
+            System.out.println("Kodefeil: Gir feil posisjon for maksverdien!");
+            antallfeil++;
         }
 
-        return a;                        // permutasjonen returneres
-    }
-    public static int[] randPermB(int n)  // virker, men er ineffektiv
-    {
-        Random r = new Random();         // en randomgenerator
-        int[] a = new int[n];            // en tabell med plass til n tall
-        boolean[] har = new boolean[n];  // en boolsk tabell
-
-        for (int i = 0; i < n; )         // vi skal legge inn n tall
+        a = new int[0];  // en tom tabell, lengde lik 0
+        boolean unntak = false;
+        try
         {
-            int k = r.nextInt(n);          // trekker en indeks k
-            if (har[k] == false)           // sjekker
-            {
-                har[k] = true;               // oppdaterer den boolske tabellen
-                a[i++] = k + 1;              // legger inn k + 1 i a
+            maks2(a);  // kaller maks-metoden
+        }
+        catch (Exception e)
+        {
+
+            unntak = true;
+            if (!(e instanceof java.util.NoSuchElementException)) {
+                System.out.println("Kodefeil: Feil unntak for en tom tabell!");
+                antallfeil++;
             }
-        }
-        return a;                        // tabellen returneres
-    }
-    public static int[] randPermC(int n)  // virker, men er ineffektiv
-    {
-        Random r = new Random();         // en randomgenerator
-        int[] a = new int[n];            // en tabell med plass til n tall
-        boolean[] har = new boolean[n];  // en boolsk tabell
-
-        for (int i = 0; i < n; )         // vi skal legge inn n tall
-        {
-            int k = r.nextInt(n);          // trekker en indeks k
-            if (har[k] == false)           // sjekker
-            {
-                har[k] = true;               // oppdaterer den boolske tabellen
-                a[i++] = k + 1;              // legger inn k + 1 i a
             }
+
+        if (!unntak) {
+            System.out.println("Kodefeil: Mangler unntak for en tom tabell!");
         }
-        return a;                        // tabellen returneres
+        a = new int[]{11,9,8,7};
+        if(maks2(a) != 0){
+            antallfeil++;
+            System.out.println("Kodefeil: Det første tallet skal være stærst");
+        }
+        a = new int[]{1,2,3,4,11};
+        if(maks2(a) != a.length-1){
+            antallfeil++;
+            System.out.println("Kodefeil: Det siste tallet skal være størst");
+        }
+        a=new int[]{2,2,4,4,4,4,4};
+        if(maks2(a) != 2){
+            antallfeil++;
+            System.out.println("Kodefeil: Feil i koden");
+        }
+        a = new int[]{8,5,9,9,6};
+        if(maks2(a) !=2){
+            antallfeil++;
+            System.out.println("Kodefeil: Feil indeks");
+        }
+            return antallfeil;
     }
+        public static int[] stig(int[] a){
+            for(int i = a.length-1; i > 0; i--){
+                for(int j = 0; j< i ; j++){
+                    if(a[j] > a[i]){
+                        bytt(a,i,j);
+                    }
+                }
+            }
+
+        return a;
+        }
+
+
+
 }

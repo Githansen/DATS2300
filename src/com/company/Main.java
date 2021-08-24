@@ -4,9 +4,7 @@ import java.text.DecimalFormat;
 import java.util.Arrays;
 import java.util.Random;
 
-
-import static com.company.Uke1sortering.maks;
-import static com.company.Uke1sortering.randPermB;
+import static com.company.Uke1sortering.*;
 
 
 public class Main {
@@ -25,25 +23,44 @@ public class Main {
         for(double i = 2; i <= 5; i++){
             sum += 1/i;
         }
-        System.out.println(Math.log(100000000)-0.423);
+        System.out.println(Math.log(50)-0.423);
         //gjennomsnittlig antall tall som er større enn alle foran er det harmoniske tallet -1
             System.out.println(Uke1sortering.harmonisk(100000000)-1);
             System.out.println(Math.log(100000000) -0.423);
             System.out.println(Uke1sortering.eulers(100000000));
 
-        int n = 1000000;
+        int n = 60000;
         long tid = System.currentTimeMillis();
-         randPermB(n);
+         Randompermutations.randPerm1(n);
         tid = System.currentTimeMillis() - tid;
-        System.out.println(tid + " ms");
+        System.out.println(tid + " Rand");
 
 
         tid = System.currentTimeMillis();
-        Uke1sortering.randomarray(n);
+        Randompermutations.randPerm2(n);
         tid = System.currentTimeMillis() - tid;
-        System.out.println(tid + " ms");
+        System.out.println(tid + " Rand2");
 
 
+        tid = System.currentTimeMillis();
+        Randompermutations.randPerm3(n);
+        tid = System.currentTimeMillis() - tid;
+        System.out.println(tid + " Rand3");
+
+/*
+        tid = System.currentTimeMillis();
+        Randompermutations.randPerm4(n);
+        tid = System.currentTimeMillis() - tid;
+        System.out.println(tid + " Rand4");
+*/
+        tid = System.currentTimeMillis();
+        Randompermutations.randPerm5(n);
+        tid = System.currentTimeMillis() - tid;
+        System.out.println(tid + " Rand5");
+        int x [] = {3,4,5,6,7,8,9,19};
+        System.out.println(Arrays.toString(x));
+        Randompermutations.randPerm6(3,6);
+        Randompermutations.scramble(x);
     }
 
 }
