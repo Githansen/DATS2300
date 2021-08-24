@@ -55,21 +55,21 @@ public class Uke1sortering {
 
             return numbers;
         }
-      public static int[] delsortering(int[] verdier){
-    int fra = 0;
-    int til = verdier.length -1;
-    for(int i = 0; i < verdier.length; i++){
-        while(verdier[fra] %2 != 0 && fra < til){
-            fra++;
+    public static int[] delsortering(int[] a){
+        int venstre = 0;
+        int høyre = a.length-1;
+        for(int i = 0; i < a.length; i++){
+            while (a[venstre]%2 != 0 && venstre < høyre){
+                venstre++;
+            }
+            while (a[høyre]%2 ==0 && høyre > venstre){
+                høyre--;
+            }
+            bytt(a,venstre,høyre);
         }
-        while(verdier[til] %2 == 0 && fra < til){
-            til--;
-        }
-        bytt(verdier, fra,til);
-    }
 
-          return verdier;
-      }
+        return a;
+    }
       public static int[] bytt(int[] numbers, int i, int j){
             int temp = numbers[i];
             numbers[i] = numbers[j];

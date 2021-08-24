@@ -99,7 +99,6 @@ public class Randompermutations {
     public static int[] randPerm6(int n, int k){
         int[] a = new int[1+k-n];
         Random r = new Random();
-        System.out.println(r.nextInt(k-n)+n);
         for(int i = n; i <= k;){
             int x = r.nextInt(k-n+1);
             if(a[x] == 0){

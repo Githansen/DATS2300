@@ -4,7 +4,7 @@ package com.company;
 import java.util.Random;
 public class Program
 {
-
+// Mange av de samme metodene ligger i Uke1sortering.java men har de her også for oversikten
     public static void bytt(int[] a, int i, int j)
     {
         int temp = a[i]; a[i] = a[j]; a[j] = temp;
@@ -106,6 +106,7 @@ public class Program
             }
     } // maks
 
+    //Oppgave 1.1.10 laget til et program for oversikt
     public static void main(String[] args)
     {
         int n = 100_000;        // tabellstørrelse
