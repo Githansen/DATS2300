@@ -10,22 +10,7 @@ public class Program
         int temp = a[i]; a[i] = a[j]; a[j] = temp;
     }
 
-    public static int[] randPerm(int n)
-    {
-        int[] a = new int[n]; // fyller tabellen med 1, 2, . . , n
-        for (int i = 0; i < n; i++) a[i] = i+1;
 
-        Random r = new Random();  // hentes fra java.util
-
-        for (int k = n-1; k > 0; k--)
-        {
-            int i = r.nextInt(k+1);  // tilfeldig tall fra [0,k]
-            bytt(a,k,i);
-        }
-
-        return a; // tabellen med permutasjonen returneres
-
-    } // randPerm
 
     public static int kostnader(int[] a) // legges i class Program
     {
@@ -34,21 +19,7 @@ public class Program
         return m;
     }
 
-    public static double maks1(int[] a)  // a er en heltallstabell
-    {
-        if (a.length < 1)
-            throw new java.util.NoSuchElementException("a er tom");
 
-        int m = 0;  // indeks til største verdi
-        double antall = 0;
-        for (int i = 0; i < a.length; i++) // obs: starter med i = 1
-        {
-            if (a[i] > a[m]){ m = i; antall++;};  // indeksen oppdateres
-        }
-
-        return antall;  // returnerer indeksen/posisjonen til største verdi
-
-    } // maks
     public static double antallhøyere(int[] a)  // a er en heltallstabell
     {
         if (a.length < 1)
@@ -114,12 +85,13 @@ public class Program
 
         long tid = 0;           // for tidsmåling
 
-        int a[] = randPerm(n);
+        int a[] = Randompermutations.randPerm1(n);
         double sum = 0;
-        for (int i = 0; i < antall; i++) sum+=antallhøyere(randPerm(100000));
+        for (int i = 0; i < antall; i++) sum+=antallhøyere(Randompermutations.randPerm1(100000));
         System.out.println("Antall tall som er større enn alle foran. n = " +n + " Testes antall: " + antall);
         double t = sum/antall;
         System.out.println(t);
+
 
         tid = System.currentTimeMillis();  // leser av klokken
         for (int i = 0; i < antall; i++) kostnader(a);
@@ -127,7 +99,7 @@ public class Program
         System.out.println("Faste kostnader: " + tid + " millisek");
 
         tid = System.currentTimeMillis();  // leser av klokken
-        for (int i = 0; i < antall; i++) maks1(a);
+        for (int i = 0; i < antall; i++) Uke1sortering.maks(a);
         tid = System.currentTimeMillis() - tid;  // medgått tid
         System.out.println("Maks1-metoden: " + tid + " millisek");
 

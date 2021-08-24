@@ -4,7 +4,7 @@ import java.text.DecimalFormat;
 import java.util.Arrays;
 import java.util.Random;
 
-import static com.company.Program.maks1;
+
 import static com.company.Program.maks2;
 
 //div algoritmer for testing
@@ -139,7 +139,7 @@ public class Uke1sortering {
         boolean unntak = false;
         try
         {
-            maks2(a);  // kaller maks-metoden
+            maks(a);  // kaller maks-metoden
         }
         catch (Exception e)
         {
@@ -155,22 +155,22 @@ public class Uke1sortering {
             System.out.println("Kodefeil: Mangler unntak for en tom tabell!");
         }
         a = new int[]{11,9,8,7};
-        if(maks2(a) != 0){
+        if(maks(a) != 0){
             antallfeil++;
             System.out.println("Kodefeil: Det første tallet skal være stærst");
         }
         a = new int[]{1,2,3,4,11};
-        if(maks2(a) != a.length-1){
+        if(maks(a) != a.length-1){
             antallfeil++;
             System.out.println("Kodefeil: Det siste tallet skal være størst");
         }
         a=new int[]{2,2,4,4,4,4,4};
-        if(maks2(a) != 2){
+        if(maks(a) != 2){
             antallfeil++;
             System.out.println("Kodefeil: Feil i koden");
         }
         a = new int[]{8,5,9,9,6};
-        if(maks2(a) !=2){
+        if(maks(a) !=2){
             antallfeil++;
             System.out.println("Kodefeil: Feil indeks");
         }

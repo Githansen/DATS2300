@@ -46,6 +46,7 @@ public class Main {
         System.out.println("Laget ulike måter å sette tall fra 1 til n i n-stort array: ");
         int n = 60000;
 
+
         //Teller hvor lang tid det tar å lage tilfeldig array. 1.1.10
         long tid = System.currentTimeMillis();
          Randompermutations.randPerm1(n);
@@ -89,6 +90,9 @@ public class Main {
         //Oppgave 1.1.9 2
         System.out.println("Tar inn et array og sorterer det tilfeldig: ");
         System.out.println(Arrays.toString(Randompermutations.scramble(x)));
+    Uke1sortering.makstest();
     }
+
+
 
 }
