@@ -12,7 +12,8 @@ public class Uke1sortering {
     //returnerer indeks til største tall
     public static int maks(int[] a)  // a er en heltallstabell
     {
-        if (a.length < 1) throw new IllegalArgumentException("a er tom");
+        if (a.length < 1)
+            throw new java.util.NoSuchElementException("a er tom");
         int antall = 0;
         int m = 0;  // indeks til største verdi
 
@@ -174,6 +175,7 @@ public class Uke1sortering {
             antallfeil++;
             System.out.println("Kodefeil: Feil indeks");
         }
+
             return antallfeil;
     }
         public static int[] stig(int[] a){
@@ -188,6 +190,38 @@ public class Uke1sortering {
         return a;
         }
 
+    public static void snu(int[] a){
+        int i = 0;
+        int j = a.length -1;
+        while(i <j){
+            bytt(a,i,j);
+            i++;
+            j--;
+        }
+        System.out.println(Arrays.toString(a));
+    }
+    public static void sorterned(int[] a){
 
+        int i = 0;
+        while(i < a.length){
+            int max = maksfratil(a,i,a.length-1);
+            bytt(a, i,max);
+            i++;
+        }
+        System.out.println(Arrays.toString(a));
+
+    }
+    public static int maksfratil(int[]a, int fra, int til){
+        int maxverdi = a[fra];
+        int m = 0;
+        for(int i = fra; i <= til; i++){
+            if(a[i] >= maxverdi){
+                m = i;
+                maxverdi = a[i];
+            }
+        }
+
+        return m;
+    }
 
 }
