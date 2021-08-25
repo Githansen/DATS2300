@@ -85,14 +85,14 @@ public class Main {
         //Oppgave 1.1.8 12
         System.out.println("Lager array ved gitt lavest og størst tall");
         Randompermutations.randPerm6(3,6);
-    int [] ppp = {3,4,5,6,7,8,9,19,22};
+    int [] ppp = {3,4,5,6,7,8,9,9,19,22};
 
         //Oppgave 1.1.9 2
         System.out.println("Tar inn et array og sorterer det tilfeldig: ");
         System.out.println(Arrays.toString(Randompermutations.scramble(x)));
         System.out.println(Uke1sortering.makstest());
         Uke1sortering.snu(x);
-        System.out.println(maksfratil(ppp,0,2));
+        System.out.println(maksfratil(ppp,2,5));
         Uke1sortering.sorterned(ppp);
     }
 

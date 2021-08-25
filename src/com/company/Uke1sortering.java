@@ -213,9 +213,9 @@ public class Uke1sortering {
     }
     public static int maksfratil(int[]a, int fra, int til){
         int maxverdi = a[fra];
-        int m = 0;
-        for(int i = fra; i <= til; i++){
-            if(a[i] >= maxverdi){
+        int m = fra;
+        for(int i = fra+1; i <= til; i++){
+            if(a[i] > maxverdi){
                 m = i;
                 maxverdi = a[i];
             }
