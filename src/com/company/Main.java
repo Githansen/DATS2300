@@ -94,6 +94,9 @@ public class Main {
         Uke1sortering.snu(x);
         System.out.println(maksfratil(ppp,2,5));
         Uke1sortering.sorterned(ppp);
+        Testprogrammer.stigsorteringstest();
+        Uke1sortering.tilsjekk(10);
+
     }
 
 
