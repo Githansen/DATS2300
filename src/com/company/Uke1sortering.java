@@ -223,5 +223,15 @@ public class Uke1sortering {
 
         return m;
     }
+    public static int[] sorterfratiL(int[] a, int fra, int til){
+        for(int i = fra; i<til; i++){
+            for(int j = i+1; j <=til; j++){
+                if(a[i] < a[j])bytt(a,i,j);
+            }
+
+        }
+System.out.println(Arrays.toString(a));
+        return a;
+    }
 
 }

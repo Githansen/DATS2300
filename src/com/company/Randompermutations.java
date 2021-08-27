@@ -45,12 +45,12 @@ public class Randompermutations {
     {
         Random r = new Random();         // en randomgenerator
         int[] a = new int[n];// en tabell med plass til n tall
-        // en boolsk tabell
+
 
         for (int i = 1; i < n; )         // vi skal legge inn n tall
         {
             int k = r.nextInt(n);// trekker en indeks k
-            if(a[k] ==0) {               // oppdaterer den boolske tabellen
+            if(a[k] ==0) {              
                 a[k] = i++;// legger inn k + 1 i a
 
             }
