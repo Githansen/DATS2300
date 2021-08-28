@@ -2,7 +2,7 @@ package com.company;
 
 import static com.company.Program.bytt;
 import static com.company.Program.maks2;
-import static com.company.Uke1sortering.maks;
+import static com.company.Ekstremalpunkter.maks;
 import static com.company.Uke1sortering.stig;
 
 public class Testprogrammer {

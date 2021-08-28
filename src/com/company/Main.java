@@ -4,6 +4,7 @@ import java.text.DecimalFormat;
 import java.util.Arrays;
 import java.util.Random;
 
+import static com.company.Ekstremalpunkter.maks;
 import static com.company.Uke1sortering.*;
 
 
@@ -18,7 +19,7 @@ public class Main {
         System.out.println(maks(tilfeldig));
 
         System.out.println("Skriver ut indeks til minstet tall i liste med tilfeldige tall: ");
-        System.out.println(Uke1sortering.min(tilfeldig));
+        System.out.println(Ekstremalpunkter.min(tilfeldig));
 
         System.out.println("Sorterer oddetall på venstre og partall på høyre side: ");
         System.out.println(Arrays.toString(Uke1sortering.delsortering(synkende)));
@@ -85,17 +86,20 @@ public class Main {
         //Oppgave 1.1.8 12
         System.out.println("Lager array ved gitt lavest og størst tall");
         Randompermutations.randPerm6(3,6);
-    int [] ppp = {3,4,5,6,7,8,9,9,19,22};
-
+    int [] ppp = {3,3,3,3,3,3,3,4,5,6,7,8,2354,224,19,22};
+        System.out.println(Uke1sortering.antallulike(ppp));
         //Oppgave 1.1.9 2
         System.out.println("Tar inn et array og sorterer det tilfeldig: ");
         System.out.println(Arrays.toString(Randompermutations.scramble(x)));
-        System.out.println(Uke1sortering.makstest());
+        System.out.println(Testprogrammer.makstest());
         Uke1sortering.snu(x);
-        System.out.println(maksfratil(ppp,2,5));
         Uke1sortering.sorterned(ppp);
         Testprogrammer.stigsorteringstest();
-        Uke1sortering.tilsjekk(10);
+        int[] a = {2, 3, 5, 7, 10, 12, 12, 15, 18, 20};
+
+
+        System.out.println(Søkealgoritmer.finn(a,1));
+
 
     }
 

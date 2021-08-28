@@ -99,7 +99,7 @@ public class Program
         System.out.println("Faste kostnader: " + tid + " millisek");
 
         tid = System.currentTimeMillis();  // leser av klokken
-        for (int i = 0; i < antall; i++) Uke1sortering.maks(a);
+        for (int i = 0; i < antall; i++) Ekstremalpunkter.maks(a);
         tid = System.currentTimeMillis() - tid;  // medgått tid
         System.out.println("Maks1-metoden: " + tid + " millisek");
 
