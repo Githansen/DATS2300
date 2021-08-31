@@ -99,8 +99,8 @@ public class Main {
         // Størst(20) har posisjon 12, nest størst(19) har posisjon 9
 
     int papaya[] = {1,2,3,-4,4,5,6,7,8,9};
-    Tabell.sorterned(papaya);
 
+        System.out.println(Arrays.toString(Tabell.finn2max(papaya,0,papaya.length)));
 
     }
 

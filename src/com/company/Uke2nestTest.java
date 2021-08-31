@@ -6,8 +6,7 @@ class Uke2nestTest {
 
     @org.junit.jupiter.api.Test
     void maksnest() {
-     int [] a = {2,3,4,5};
-        Uke2nest.maksnest(a);
+
     }
 
     @org.junit.jupiter.api.Test

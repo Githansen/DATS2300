@@ -23,7 +23,7 @@ public class Uke2nest {
 
         }
         System.out.println(maksin + " " + nestmaksin);
-        return null;
+        return new int[]{maksin,nestmaksin};
     }
     public static int minfratil(int[] a, int fra, int til){
         if (fra < 0 || til > a.length || fra >= til)

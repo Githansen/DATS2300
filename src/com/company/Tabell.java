@@ -232,7 +232,7 @@ public class Tabell {
         System.out.println(Arrays.toString(a));
     }
     public static void snuchar(char[]a, int v, int h){
-
+            vhKontroll(a.length,v,h);
        while(v < h){
            byttchar(a,v,h);
            v++;
@@ -245,9 +245,8 @@ public class Tabell {
         int m = maks(a);
         bytt(a,m,0);
         int nm = maksfratil(a,1,a.length);
-        if(nm == m){
-            nm = 0;
-        }
+        if(nm == m) nm = 0;
+
         bytt(a,m,0);
         return new int[]{m,nm};
     }
@@ -275,4 +274,56 @@ System.out.println(Arrays.toString(a));
         System.out.println(Arrays.toString(a));
         return a;
     }
+    public static int[] finn2max(int[]a, int fra, int til){
+        int max = a[fra];
+        int m = fra;
+        int nmax = a[fra+1];
+        int nm = fra+1;
+
+        for(int i = fra+2; i < til; i++){
+            System.out.println(nm + " " + m);
+            if(a[i] > nmax){
+                if(a[i]> max){
+                    nmax = max;
+                    nm = m;
+                    max = a[i];
+                    m = i;
+
+                }
+                else{
+                    nmax = a[i];
+                    nm = i;
+                }
+            }
+        }
+        return new int[]{m,nm};
+    }
+    public static int[] finn2maxhele(int[] a){
+        return finn2max(a,0,a.length);
+    }
+    public static int[] nestMakstre(int[] a)   // en turnering
+    {
+        int n = a.length;                // for å forenkle notasjonen
+
+        if (n < 2) // må ha minst to verdier!
+            throw new IllegalArgumentException("a.length(" + n + ") < 2!");
+
+        int[] b = new int[2*n];          // turneringstreet
+        System.arraycopy(a,0,b,n,n);     // legger a bakerst i b
+
+        for (int k = 2*n-2; k > 1; k -= 2)   // lager turneringstreet
+            b[k/2] = Math.max(b[k],b[k+1]);
+
+        int maksverdi = b[1], nestmaksverdi = Integer.MIN_VALUE;
+
+        for (int m = 2*n - 1, k = 2; k < m; k *= 2)
+        {
+            int tempverdi = b[k+1];  // ok hvis maksverdi er b[k]
+            if (maksverdi != b[k]) { tempverdi = b[k]; k++; }
+            if (tempverdi > nestmaksverdi) nestmaksverdi = tempverdi;
+        }
+
+        return new int[] {maksverdi,nestmaksverdi}; // størst og nest størst
+
+    } // nestMaks
 }
