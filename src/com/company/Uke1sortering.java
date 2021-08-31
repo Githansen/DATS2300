@@ -31,21 +31,7 @@ public class Uke1sortering {
 
             return numbers;
         }
-    public static int[] delsortering(int[] a){
-        int venstre = 0;
-        int høyre = a.length-1;
-        for(int i = 0; i < a.length; i++){
-            while (a[venstre]%2 != 0 && venstre < høyre){
-                venstre++;
-            }
-            while (a[høyre]%2 ==0 && høyre > venstre){
-                høyre--;
-            }
-            bytt(a,venstre,høyre);
-        }
 
-        return a;
-    }
       public static int[] bytt(int[] numbers, int i, int j){
             int temp = numbers[i];
             numbers[i] = numbers[j];
@@ -158,6 +144,41 @@ public class Uke1sortering {
 System.out.println(Arrays.toString(a));
         return a;
     }
+    public static int[] delsortering(int [] a){
+            if(a.length < 1){
+                throw new IllegalArgumentException("Arrayet er tomt");
+            }
+                    int venstre = 0;
+                    int høyre = a.length-1;
+                while (venstre < høyre){
+                    while(a[venstre] % 2 != 0){
+                        venstre++;
+                    }
+                    while(a[høyre] % 2== 0 ){
+                        høyre--;
+                    }
+                    bytt(a,venstre, høyre);
+                }
+                for(int i  =0; i < venstre ; i++){
+                    for(int j = i+1; j < venstre ; j++){
+                        if(a[i] > a[j]) bytt(a,i,j);
+                    }
+                }
+                for(int i = venstre; i < a.length; i++){
+                    for(int j = i+1; j < a.length; j++){
+                        if(a[i] > a[j]) bytt(a,i,j);
+                    }
+                }
 
+            return a;
+    }
+    public static int[] rotasjon(int[] a){
+            for(int i = a.length-1; i >0; i--){
+                bytt(a, i, i-1);
+            }
+
+
+            return a;
+    }
 
 }

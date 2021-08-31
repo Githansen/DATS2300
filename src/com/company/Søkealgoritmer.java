@@ -2,6 +2,7 @@ package com.company;
 
 public class Søkealgoritmer {
     public static int finn(int[] a, int verdi){
+       if(a.length < 1) throw new IllegalArgumentException("Arrayet er tomt");
         int m = (a.length)/2;
         int i = m;
         if(verdi > a[a.length-1])return -a.length-1;
@@ -18,7 +19,7 @@ public class Søkealgoritmer {
                 i++;
             }
         }
-        return -(i+1);
 
+        return -(i+1);
     }
 }
