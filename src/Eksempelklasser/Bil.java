@@ -1,5 +1,5 @@
-package com.company;
-
+package Eksempelklasser;
+//Klasse for testing
 public class Bil implements Comparable<Bil>{
     String regnr;
     int hjul;

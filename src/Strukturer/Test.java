@@ -68,6 +68,7 @@ public class Test {
         }
         return a.antall() - b.antall();
     }
+
     public static <T> int fjernBakerst(Queue<T> kø, int antall){
 
         if(antall > kø.size()) kø.clear();
@@ -100,12 +101,13 @@ public class Test {
         Stakk<T> hjelp = new TabellStakk<>();
         int n = s.antall();
         int indeks = 0;
-        for(int i = 0; i < n; i++){
+        while(!s.tom()){
             if(s.kikk() == verdi){
-                indeks = i;
+
                 break;
             }
             hjelp.leggInn(s.taUt());
+            indeks++;
         }
         if(s.antall() == 0) indeks = -1;
         while (hjelp.antall() > 0) s.leggInn(hjelp.taUt());
@@ -170,6 +172,24 @@ public class Test {
         System.arraycopy(a,antall,a,0,a.length-antall);
         for(int i = a.length-antall; i < a.length; i++) a[i] = 0;
         return a.length -antall;
+    }
+    public static int finn(int []a, int verdi){
+        int v = 0, h = a.length-1;
+        int m = 0;
+        boolean finnes = false;
+        while(v<=h){
+            m = (v+h)/2;
+            if(a[m] == verdi){
+                finnes = true;
+                break;
+            }
+            if(a[m] > verdi) h = m-1;
+            if(a[m] < verdi) v = m+1;
+        }
+        if(a[m] == verdi){
+            while(a[m-1] == verdi) m--;
+        }
+        return finnes? m : -(v+1);
     }
 
     public static boolean girFulltBinærtre(int[] a){

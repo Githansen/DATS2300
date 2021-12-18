@@ -6,17 +6,10 @@ import java.util.Random;
 
 
 import static com.company.Ekstremalpunkter.min;
-import static com.company.Program.maks2;
-
-//div algoritmer for testing
-public class Uke1sortering {
-    //returnerer indeks til største tall
 
 
 
-
-        //returnerer indeks til minste tall
-
+public class IntroSortering {
 
         public static int[] stigende(int[] numbers){
             for(int i = 0; i < numbers.length; i++){
@@ -58,19 +51,7 @@ public class Uke1sortering {
 
             return numbers;
       }
-      public static int [] roterx(int[] numbers, int x){
-            if(x<0){
-                for(int i = 0; i < numbers.length+x; i++){
-                    bytt(numbers, i , i-x);
-                }
-            }
-            else {
-                for (int i = numbers.length - 1; i > x - 1; i--) {
-                    bytt(numbers, i, i - x);
-                }
-            }
-            return numbers;
-      }
+
     public static double harmonisk(int n)
     {
         double sum = 0.0;

@@ -10,7 +10,7 @@ public class SBinTre<T> {
         private T verdi;                   // nodens verdi
         private Node<T> venstre, høyre;    // venstre og høyre barn
         private Node<T> forelder;          // forelder
-
+        private int vantall;
         // konstruktør
         private Node(T verdi, Node<T> v, Node<T> h, Node<T> forelder) {
             this.verdi = verdi;
@@ -56,6 +56,8 @@ public class SBinTre<T> {
     {
         return balansert(a, Comparator.naturalOrder());
     }
+
+
     private static <T> Node<T> balansert(T[] a, int v, int h)  // en rekursiv metode
     {
         if (v > h) return null;                       // tomt intervall -> tomt tre
@@ -69,6 +71,66 @@ public class SBinTre<T> {
         Node<T> q = balansert(a, m + 1, h);           // høyre subtre
 
         return new Node<T>(verdi, p, q,null);               // rotnoden
+    }
+    public T [] nederstenivå(){
+        ArrayList<T> liste = new ArrayList<>();
+        nederste(rot,liste,0);
+        T [] retur = (T[]) new Object[liste.size()];
+        for(int i = 0; i < liste.size(); i++){
+            retur[i] = liste.get(i);
+
+        }
+        return retur;
+    }
+    public void nederste(Node<T> curr,ArrayList<T> liste, int nivå){
+        if(nivå == 4 && curr != null){
+            System.out.println(curr.verdi);
+            liste.add(curr.verdi);
+        }
+
+        if(curr != null) {
+            nederste(curr.venstre, liste, nivå + 1);
+            nederste(curr.høyre, liste, nivå + 1);
+        }
+    }
+    public void settvAntall(){
+        Kø <Node<T>> kø = new TabellKø<>();
+        kø.leggInn(rot);
+        while(!kø.tom()){
+            Node<T> temp = kø.taUt();
+            if(temp.venstre != null)kø.leggInn(temp.venstre);
+            if(temp.høyre != null)kø.leggInn(temp.høyre);
+            iterasjon(temp);
+            System.out.println(temp.verdi + " Har vantall:  " +temp.vantall);
+        }
+    }
+
+    public void iterasjon(Node<T> curr){
+        if(curr.venstre == null) {
+            curr.vantall = 0;
+            return;
+        }
+        Kø<Node<T>> kø = new TabellKø<>();
+        kø.leggInn(curr.venstre);
+        int antall = 0;
+        while(!kø.tom()) {
+            Node<T> denne = kø.taUt();
+            if (denne.venstre != null) kø.leggInn(denne.venstre);
+            if (denne.høyre != null) kø.leggInn(denne.høyre);
+            antall++;
+        }
+        curr.vantall = antall;
+    }
+    public String inorderString(){
+        StringJoiner t = new StringJoiner(", ", "[","]");
+       inorderrecurs(rot,t);
+        return t.toString();
+    }
+    private void inorderrecurs(Node<T> p,StringJoiner t){
+        if(p == null)return;
+        inorderrecurs(p.venstre, t);
+        t.add(p.verdi.toString());
+        inorderrecurs(p.høyre, t);
     }
     Liste<T> intervallsøk(T fraverdi, T tilverdi){
     Kø <Node<T>> nivå = new TabellKø<>();
@@ -436,6 +498,17 @@ public class SBinTre<T> {
             oppgave.utførOppgave(p.verdi);
         }
     }
+
+        public void precursive(){
+        it(rot);
+        }
+        public void it(Node <T> v){
+        if(v == null) return;
+    System.out.println(v.verdi + " ");
+    it(v.venstre);
+    it(v.høyre);
+    }
+
     public void preorderit(){
         Stakk<Node <T>> kø = new TabellStakk<>();
         kø.leggInn(rot);

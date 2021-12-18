@@ -121,22 +121,23 @@ public class BinTre<T>{
         return sj.toString();
     }
     public boolean ermintreiterativ(Comparator<? super T> c){
-        StringJoiner sj = new StringJoiner(", ", "[", "]");
-        Kø<Node <T>> kø = new TabellKø<>();
-        kø.leggInn(rot);
-        while(!kø.tom()){
-            Node<T> curr = kø.taUt();
-            if(curr.venstre != null){
-                if (c.compare(curr.verdi, curr.venstre.verdi) > 0) return false;
-                kø.leggInn(curr.venstre);
-            }
-            if(curr.høyre != null){
-                if(c.compare(curr.verdi, curr.høyre.verdi) > 0) return false;
-                kø.leggInn(curr.høyre);
-            }
+      Node<T> curr = rot;
+      Kø <Node <T>> kø = new TabellKø<>();
+      kø.leggInn(rot);
+      while(!kø.tom()){
+      curr = kø.taUt();
+        if(curr.venstre != null){
+            kø.leggInn(curr.venstre);
+            if(c.compare(curr.verdi, curr.venstre.verdi) > 0)return false;
         }
+        if(curr.høyre != null){
+            kø.leggInn(curr.høyre);
+            if(c.compare(curr.verdi, curr.høyre.verdi) > 0)return false;
+        }
+      }
 
-        return true;
+
+      return true;
     }
     private boolean mintre(Node<T> q, Comparator<? super T> c){
 
@@ -177,6 +178,27 @@ public class BinTre<T>{
             preorden(p.venstre,oppgave);
             preorden(p.høyre,oppgave);
         }
+    }
+    public void nederstenivå(){
+        int x = 0;
+        Node<T> curr = rot;
+        while(curr.venstre != null && curr.høyre != null){
+            while (curr.venstre != null){
+                x++;
+                curr = curr.venstre;
+            }
+           while (curr.høyre != null){
+               curr = curr.høyre;
+               x++;
+           }
+
+        }
+        nederst(rot, x, 0);
+    }
+    private void nederst(Node <T> curr, int lavest, int nivå){
+        if(nivå == lavest) System.out.print(curr.verdi + " ");
+        if(curr.venstre != null) nederst(curr.venstre, lavest, nivå+1);
+        if(curr.høyre != null) nederst(curr.høyre, lavest, nivå+1);
     }
     public T  preindeks(int indeks){
         ArrayList<T> liste = new ArrayList<>();
@@ -267,6 +289,20 @@ public class BinTre<T>{
 
         return gammelverdi;
     }
+    public ArrayList<T> lastlevel(){
+        ArrayList<T> retur = new ArrayList<>();
+        last(retur, rot, 2, 0);
+        System.out.println(retur.toString());
+        return retur;
+    }
+    private void last(ArrayList<T> retur,Node<T> q, int lastlevel, int currlevel){
+        if(lastlevel == currlevel) retur.add(q.verdi);
+        if(q.venstre != null)
+            last(retur, q.venstre, lastlevel, currlevel+1);
+           if(q.høyre != null)
+            last(retur, q.høyre, lastlevel, currlevel+1);
+    }
+
     public final void leggInn(int posisjon, T verdi) {
         if (posisjon < 1) throw new
                 IllegalArgumentException("Posisjon (" + posisjon + ") < 1!");

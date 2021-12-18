@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Random;
 
-import static com.company.Uke1sortering.bytt;
+import static com.company.IntroSortering.bytt;
 
 public class Randompermutations {
     public static int[] randPerm1(int n)  // en effektiv versjon

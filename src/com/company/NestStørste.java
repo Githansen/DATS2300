@@ -1,6 +1,6 @@
 package com.company;
 
-public class Uke2nest {
+public class NestStørste {
     public static int[] maksnest(int [] a){
         int maksverdi = a[0];
         int nestmaksverdi = a[1];

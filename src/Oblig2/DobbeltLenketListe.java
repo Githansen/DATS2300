@@ -9,6 +9,8 @@ import Strukturer.Liste;
 import java.util.*;
 
 
+
+
 public class DobbeltLenketListe<T> implements Liste<T> {
 
     /**
@@ -36,7 +38,6 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     private Node<T> hale;          // peker til den siste i listen
     private int antall;            // antall noder i listen
     private int endringer;         // antall endringer i listen
-
     public DobbeltLenketListe() {
         antall = 0;
         endringer = 0;
@@ -186,6 +187,33 @@ public class DobbeltLenketListe<T> implements Liste<T> {
             return p;
         }
     }
+    public void reverser(){
+     T [] a = (T[]) new Object[antall()];
+     Node<T> curr = hale;
+     for(int i = 0; i < a.length; i++){
+         a[i] = curr.verdi;
+         curr = curr.forrige;
+     }
+     curr = hode;
+     for(int i = 0; i < a.length; i++){
+         curr.verdi = a[i];
+         curr = curr.neste;
+     }
+    }
+    public void effreverser(){
+        Node<T> p = null;
+        Node<T> curr = hode;
+        hale = hode;
+        while(curr != null){
+            p = curr.forrige;
+            curr.forrige = curr.neste;
+            curr.neste = p;
+            curr = curr.forrige;
+        }
+        if(p != null){
+            hode= p.forrige;
+        }
+    }
     @Override
     public boolean inneholder(T verdi) {
         return indeksTil(verdi) != -1;
@@ -224,10 +252,11 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
 
 
-   @Override public boolean fjern(T verdi){
+   @Override
+   public boolean fjern(T verdi){
        Node <T> curr = hode;
        while(curr != null){
-           if(curr.verdi.equals(verdi))break;
+           if(verdi.equals(curr.verdi))break;
            curr = curr.neste;
        }
        if(curr == null) return false;
@@ -433,6 +462,18 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         kvikksortering(liste, fra, k-1, c);
         kvikksortering(liste, k+1, til, c);
     }
+
+    public static<T>int compare(Liste<T> a, Liste<T> b, Comparator<? super T> comp){
+        Iterator<T> aliste = a.iterator();
+        Iterator<T> bliste = b.iterator();
+        int grense = Math.min(a.antall(), b.antall());
+        for(int i = 0; i < grense ; i++){
+            int x = comp.compare(aliste.next(), bliste.next());
+            if(x != 0) return x;
+        }
+        return a.antall() - b.antall();
+    }
+
     private static<T> int partering(Liste <T> liste, int v, int h,  T skilleverdi, Comparator<? super T> c){
 
         while(true){
