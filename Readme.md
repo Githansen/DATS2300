@@ -1,2 +1,2 @@
-Dette repoet er en samling av oppgaver, pensum og egen trening i faget DATS2300 ved Oslomet (Algoritmer og datastrukturer). 
-Oppdateres etterhvert utover semesteret.
+Dette repoet er en samling av oppgaver, pensum, egen trening og eksamensinnlevering i faget DATS2300 ved Oslomet (Algoritmer og datastrukturer). 
+
